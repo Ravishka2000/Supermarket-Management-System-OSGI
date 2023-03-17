@@ -2,21 +2,23 @@ package employeemanagement_publisher;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 
 public class EmployeePublisherActivator implements BundleActivator {
 
-	private static BundleContext context;
-
-	static BundleContext getContext() {
-		return context;
-	}
-
+	ServiceRegistration<?> servicePublishRegistration;
+	
 	public void start(BundleContext bundleContext) throws Exception {
-		EmployeePublisherActivator.context = bundleContext;
+		System.out.println("Publisher Service Started");
+		EmployeeService servicepublisher = new EmployeeServiceImpl();
+		servicePublishRegistration = bundleContext.registerService(EmployeeService.class.getName(), servicepublisher, null);
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
-		EmployeePublisherActivator.context = null;
+		
+		System.out.println("Publisher Stop");
+		servicePublishRegistration.unregister();
+		
 	}
 
 }
