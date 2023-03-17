@@ -74,7 +74,7 @@ public class BillingSubscriberActivator implements BundleActivator {
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Stop Billing Service....");
+		System.out.println("Stop Billing App....");
 		context.ungetService(billingServiceRef);
 	}
 

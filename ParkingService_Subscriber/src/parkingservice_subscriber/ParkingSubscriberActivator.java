@@ -109,7 +109,7 @@ public class ParkingSubscriberActivator implements BundleActivator {
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Stop Parking Service....");
+		System.out.println("Stop Parking App....");
 		context.ungetService(garageServiceRef);
 	}
 

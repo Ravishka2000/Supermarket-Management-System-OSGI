@@ -17,7 +17,7 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 	ServiceReference<?> serviceReference;
 
 	public void start(BundleContext bundleContext) throws Exception {
-		System.out.println("Start Subscriber Service");
+		System.out.println("Start Employee Management App...");
 		serviceReference = bundleContext.getServiceReference(EmployeeService.class.getName());
 		EmployeeService servicePublish = (EmployeeService) bundleContext.getService(serviceReference);
 		System.out.println(servicePublish.ServicePublisher());
@@ -138,7 +138,7 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 
 	public void stop(BundleContext bundleContext) throws Exception {
 		
-		System.out.println("Good Bye!!!");
+		System.out.println("Stop Employee Service App...");
 		bundleContext.ungetService(serviceReference);
 	}
 
