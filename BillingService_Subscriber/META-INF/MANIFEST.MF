@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BillingService_Subscriber
+Bundle-SymbolicName: BillingService_Subscriber
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: billingservice_subscriber.BillingSubscriberActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: BillingService.Subscriber
+Import-Package: billingservice_publisher,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
