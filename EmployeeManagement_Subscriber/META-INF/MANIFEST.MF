@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EmployeeManagement_Subscriber
 Bundle-SymbolicName: EmployeeManagement_Subscriber
 Bundle-Version: 1.0.0.qualifier
+Export-Package: employeemanagement_subscriber
 Bundle-Activator: employeemanagement_subscriber.EmployeeSubscriberActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: EmployeeManagement.Subscriber

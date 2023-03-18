@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
 
 import stockmanagement_publisher.Product;
 import stockmanagement_publisher.StockService;
@@ -16,6 +17,7 @@ public class StockSubscriberActivator implements BundleActivator {
 	
 	private ServiceReference<StockService> inventoryServiceRef;
     private StockService inventoryService;
+    private ServiceRegistration<StockSubscriberActivator> registration;
 
 	public void start(BundleContext context) throws Exception {
 		
@@ -23,6 +25,8 @@ public class StockSubscriberActivator implements BundleActivator {
 		
 		inventoryServiceRef = context.getServiceReference(StockService.class);
 		inventoryService = context.getService(inventoryServiceRef);
+		
+		registration = context.registerService(StockSubscriberActivator.class, this, null);
 		
 		System.out.println("\n-------------------------------------");
 		System.out.println("|      Welcome to Inventory App      |");
@@ -133,6 +137,7 @@ public class StockSubscriberActivator implements BundleActivator {
 		System.out.println("Stop Inventory App....");
 		inventoryService.printInventoryToCSV(); 
 		context.ungetService(inventoryServiceRef);
+		registration.unregister();
 	}
 
 }

@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: StockManagement_Subscriber
 Bundle-SymbolicName: StockManagement_Subscriber
 Bundle-Version: 1.0.0.qualifier
+Export-Package: stockmanagement_subscriber
 Bundle-Activator: stockmanagement_subscriber.StockSubscriberActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: StockManagement.Subscriber

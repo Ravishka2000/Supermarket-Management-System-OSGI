@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ParkingService_Subscriber
 Bundle-SymbolicName: ParkingService_Subscriber
 Bundle-Version: 1.0.0.qualifier
+Export-Package: parkingservice_subscriber
 Bundle-Activator: parkingservice_subscriber.ParkingSubscriberActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: ParkingService.Subscriber
