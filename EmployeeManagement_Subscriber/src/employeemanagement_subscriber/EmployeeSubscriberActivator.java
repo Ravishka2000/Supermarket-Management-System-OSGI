@@ -5,23 +5,20 @@ import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.osgi.framework.ServiceRegistration;
 
 import employeemanagement_publisher.EmployeeService;
+
 
 public class EmployeeSubscriberActivator implements BundleActivator {
 
 	ServiceReference<?> serviceReference;
 	Scanner scanner = new Scanner(System.in);
-	ServiceRegistration<EmployeeSubscriberActivator> registration;
 
 	public void start(BundleContext bundleContext) throws Exception {
 		
 		System.out.println("\nStart Employee Management App...");
 		serviceReference = bundleContext.getServiceReference(EmployeeService.class.getName());
 		EmployeeService servicePublish = (EmployeeService) bundleContext.getService(serviceReference);
-		
-		registration = bundleContext.registerService(EmployeeSubscriberActivator.class, this, null);
 		
 		String action;
 		int id;
@@ -122,7 +119,6 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 		
 		System.out.println("Stop Employee Service App...");
 		bundleContext.ungetService(serviceReference);
-		registration.unregister();
 	}
 
 }

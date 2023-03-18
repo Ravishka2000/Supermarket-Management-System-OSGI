@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.osgi.framework.ServiceRegistration;
 
 import billingservice_publisher.BillingService;
 
@@ -15,15 +14,13 @@ public class BillingSubscriberActivator implements BundleActivator {
 	
 	private ServiceReference<BillingService> billingServiceRef;
     private BillingService billingService;
-    private ServiceRegistration<BillingSubscriberActivator> registration;
+
 
 	public void start(BundleContext context) throws Exception {
 		String operation = "start";
 		
 		billingServiceRef = context.getServiceReference(BillingService.class);
 		billingService = context.getService(billingServiceRef);
-		
-		registration = context.registerService(BillingSubscriberActivator.class, this, null);
 		
 		System.out.println("\n-------- Welcome --------");
 		
@@ -79,7 +76,6 @@ public class BillingSubscriberActivator implements BundleActivator {
 	public void stop(BundleContext context) throws Exception {
 		System.out.println("Stop Billing App....");
 		context.ungetService(billingServiceRef);
-		registration.unregister();
 	}
 
 }

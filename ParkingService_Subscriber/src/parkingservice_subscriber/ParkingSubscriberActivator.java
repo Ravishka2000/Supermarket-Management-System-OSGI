@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.osgi.framework.ServiceRegistration;
 
 import parkingservice_publisher.ParkingService;
 
@@ -15,7 +14,7 @@ public class ParkingSubscriberActivator implements BundleActivator {
 	
 	private ServiceReference<ParkingService> garageServiceRef;
     private ParkingService garageService;
-    private ServiceRegistration<ParkingSubscriberActivator> registration;
+
 
     public void start(BundleContext context) throws Exception {
 		
@@ -23,7 +22,6 @@ public class ParkingSubscriberActivator implements BundleActivator {
 		
 		garageServiceRef = context.getServiceReference(ParkingService.class);
 		garageService = context.getService(garageServiceRef);
-		registration = context.registerService(ParkingSubscriberActivator.class, this, null);
 		
 		System.out.println("\n================================= ");
 		System.out.println("   Welcome to Parking Service 🚗  	 ");
@@ -113,7 +111,6 @@ public class ParkingSubscriberActivator implements BundleActivator {
 	public void stop(BundleContext context) throws Exception {
 		System.out.println("Stop Parking App....");
 		context.ungetService(garageServiceRef);
-		registration.unregister();
 	}
 
 }
