@@ -9,6 +9,7 @@ public interface StockService {
 	public Product getProductByName(String name);
 	public void reorderProducts();
 	public void printInventoryToCSV();
+	public void exportToCSV(String filePath);
 	public void importInventoryFromCSV();
 	public void importInventory(String filePath);
 }

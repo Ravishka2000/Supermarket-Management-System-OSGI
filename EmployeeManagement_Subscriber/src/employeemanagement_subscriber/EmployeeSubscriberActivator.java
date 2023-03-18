@@ -1,53 +1,42 @@
 package employeemanagement_subscriber;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import employeemanagement_publisher.Employee;
 import employeemanagement_publisher.EmployeeService;
-
 
 
 public class EmployeeSubscriberActivator implements BundleActivator {
 
 	ServiceReference<?> serviceReference;
+	Scanner scanner = new Scanner(System.in);
 
 	public void start(BundleContext bundleContext) throws Exception {
-		System.out.println("Start Employee Management App...");
+		
+		System.out.println("\nStart Employee Management App...");
 		serviceReference = bundleContext.getServiceReference(EmployeeService.class.getName());
 		EmployeeService servicePublish = (EmployeeService) bundleContext.getService(serviceReference);
-		System.out.println(servicePublish.ServicePublisher());
 		
-		HashMap<Integer,Employee> employee = new HashMap<>();
 		String action;
 		int id;
 		
-		Scanner str1 = new Scanner(System.in);
-		Scanner str2 = new Scanner(System.in);
-		
-		
-		System.out.println("-----------------------------------------");
+		System.out.println("\n-----------------------------------------");
 		System.out.println("| Welcome to Employee Managment System |");
 		System.out.println("-----------------------------------------");
 		
 		System.out.println();
-		
-		
 		System.out.println("a. To add an employee enter 'ADD'");
 		System.out.println("b. To remove an employee enter 'REMOVE'");
 		System.out.println("c. To view all employees enter 'VIEW'");
 		System.out.println("d. To view an employee enter 'VIEW EMPLOYEE'");
 		System.out.println("e. To exit enter 'EXIT'"+"\n");
 		
-		Scanner ob = new Scanner(System.in);
-		
 		//enter your choice
 		System.out.print("Enter: ");
-		action = ob.nextLine();
+		action = scanner.nextLine();
 		
 		System.out.println();
 		
@@ -56,7 +45,7 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 			if(action.equalsIgnoreCase("add")) {
 				
 				System.out.print("Enter the id of the employee: ");
-				id = ob.nextInt();
+				id = scanner.nextInt();
 				
 				if(servicePublish.contains(id)==true) {
 					System.out.println("Employee already exists! "+"\n");
@@ -64,19 +53,17 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 				}else {
 					
 					System.out.print("Enter the name of the employee: ");
-					String name = str1.nextLine();
+					String name = scanner.next();
 					System.out.print("Enter the contact number of the employee: ");
-					String contact = str1.nextLine();
+					String contact = scanner.next();
 				    
 				    while(contact.length()!=10) {
 				    	System.out.print("Incorrect contact number.Please enter again: ");
-					    contact = str1.nextLine();
+					    contact = scanner.next();
 				    }
 					System.out.print("Enter the age of the employee: ");
-					int age = str2.nextInt();
-				    
+					int age = scanner.nextInt();
 				  
-				    
 					System.out.println();
 				    
 					servicePublish.addEmployees(id, name, contact, age);
@@ -86,7 +73,7 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 				
 			}else if(action.equalsIgnoreCase("remove")) {
 				System.out.print("Enter the id of the employee you want to remove: ");
-				id = ob.nextInt();
+				id = scanner.nextInt();
 				
 				if(servicePublish.contains(id)==false) {
 					System.out.println("Employee does not exist"+"\n");
@@ -96,7 +83,6 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 					if(servicePublish.removeEmployees(id)==true) {
 						System.out.println("Employee is removed"+"\n");
 					}
-						
 				}	
 				
 			}else if(action.equalsIgnoreCase("view")){
@@ -104,9 +90,8 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 				
 			}else if(action.equalsIgnoreCase("view employee")) {
 				System.out.print("Enter the id of the employee: ");
-				id = ob.nextInt();
-				servicePublish.getAnEmployee(id);
-				
+				int eid = scanner.nextInt();
+				servicePublish.getAnEmployee(eid);
 				
 			}else if(!action.equalsIgnoreCase("view") || !action.equalsIgnoreCase("add") || !action.equalsIgnoreCase("remove") || !action.equalsIgnoreCase("exit")|| !action.equalsIgnoreCase("view employee")) {
 				System.out.println("Please enter a valid input! ");
@@ -119,20 +104,14 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 			System.out.println("d. To view an employee enter 'VIEW EMPLOYEE'");
 			System.out.println("e. To exit enter 'EXIT'"+"\n");
 			
-			ob = new Scanner(System.in);
-			str1 = new Scanner(System.in);
 			System.out.print("Enter: ");
-			action = ob.nextLine();
+			action = scanner.next();
 				
 		}
 		
 		System.out.println("-----------------------------------------");
 		System.out.println("|             Thank you!!!              |");
 		System.out.println("-----------------------------------------");
-		
-		
-		
-		
 		
 	}
 

@@ -23,24 +23,24 @@ public class ParkingSubscriberActivator implements BundleActivator {
 		garageServiceRef = context.getServiceReference(ParkingService.class);
 		garageService = context.getService(garageServiceRef);
 		
-		System.out.println(" \n================================= ");
+		System.out.println("\n================================= ");
 		System.out.println("   Welcome to Parking Service 🚗  	 ");
-		System.out.println("================================= ");
+		System.out.println("=================================");
 		
 		System.out.println("\nPlease choose the service you want.");
 		
 		while(!operation.equalsIgnoreCase("stop")) {
 			
-			System.out.println("----------------------------------");
-			System.out.println("| 🅿️a. Park a vehicle.           |");
-			System.out.println("| 🦸‍♀️b. Remove a vehicle.         |");
-			System.out.println("| 🔢c. Get parked vehicles count.|");
-			System.out.println("| 🆓d. Check free space.         |");
-			System.out.println("| 💲e. Calculate parking fee.    |");
-			System.out.println("| 💲f. Export status to CSV.     |");
-			System.out.println("| 💲g. Import status from CSV.   |");
-			System.out.println("| 🛑h. Type \"Stop\" to End.       |");
-			System.out.println("----------------------------------");
+			System.out.println("--------------------------------");
+			System.out.println("|️ a. Park a vehicle.           |");
+			System.out.println("| ‍️b. Remove a vehicle.         |");
+			System.out.println("| c. Get parked vehicles count.|");
+			System.out.println("| d. Check free space.         |");
+			System.out.println("| e. Calculate parking fee.    |");
+			System.out.println("| f. Export status to CSV.     |");
+			System.out.println("| g. Import status from CSV.   |");
+			System.out.println("| h. Type \"Stop\" to End.       |");
+			System.out.println("--------------------------------");
 			
 			System.out.print("\nEnter the service type : ");
 			operation = scanner.next();

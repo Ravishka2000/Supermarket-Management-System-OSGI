@@ -207,7 +207,7 @@ public class StockServiceImpl implements StockService{
 	@Override
 	public void getAllData() {
 		System.out.println("\n------------------------------------------------------------------");
-		System.out.println("|                        Inventory Detais                         |");
+		System.out.println("|                        Inventory Details                         |");
 		System.out.println("------------------------------------------------------------------\n");
 		
 		System.out.println("------------------------------------------------------------------");
@@ -245,11 +245,27 @@ public class StockServiceImpl implements StockService{
 					System.out.printf("| %-15s | %-10d | Rs.%-10s | %-15s |\n", pro.getName(), pro.getQuantity(), pro.getUnitPrice(), pro.getReOrderLevel());
 				}
 			}
-			
 			System.out.println("------------------------------------------------------------------\n");
 		}
-		
-		
+	}
+
+	@Override
+	public void exportToCSV(String filePath) {
+	    try (PrintWriter writer = new PrintWriter(new File(filePath))) {
+	        StringBuilder sb = new StringBuilder();
+	        sb.append("Product,Unit Price,Quantity,Reorder Level\n");
+	        for (Product product : inventory) {
+	            sb.append(product.getName()).append(",");
+	            sb.append(product.getUnitPrice()).append(",");
+	            sb.append(product.getQuantity()).append(",");
+	            sb.append(product.getReOrderLevel()).append("\n");
+	        }
+	        writer.write(sb.toString());
+	        System.out.println("\nℹ️ Inventory details written to " + filePath + " ℹ️");
+
+	    } catch (FileNotFoundException e) {
+	        System.out.println("Error creating file: " + e.getMessage());
+	    }
 	}
 	
 	

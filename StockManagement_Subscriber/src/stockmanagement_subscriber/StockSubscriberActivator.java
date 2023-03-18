@@ -99,7 +99,10 @@ public class StockSubscriberActivator implements BundleActivator {
 			       
 			}else if(operation.equalsIgnoreCase("f")) {
 				
-			    inventoryService.printInventoryToCSV();  
+				System.out.print("Enter the CSV file path : ");
+				String filePath = scanner.next();
+				
+			    inventoryService.exportToCSV(filePath);  
 			    
 			}else if(operation.equalsIgnoreCase("g")) {
 				

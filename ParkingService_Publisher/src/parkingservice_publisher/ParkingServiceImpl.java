@@ -118,7 +118,7 @@ public class ParkingServiceImpl implements ParkingService{
 	}
 	
 	public void printParkDetailsToCSV() {
-		String filename = "/Users/pravi/Downloads" + "/garage_status.csv";
+		String filename = "/Users/ravishkadulshan/desktop/Files" + "/garage_status.csv";
 		File file = new File(filename);
 
 		try {
@@ -148,7 +148,7 @@ public class ParkingServiceImpl implements ParkingService{
 
 	public void importDetails() {
 
-		String filename = "/Users/pravi/Downloads/garage_status.csv";
+		String filename = "/Users/ravishkadulshan/desktop/Files/garage_status.csv";
 		File file = new File(filename);
 
 	    try {
