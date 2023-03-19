@@ -32,7 +32,8 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 		System.out.println("b. To remove an employee enter 'REMOVE'");
 		System.out.println("c. To view all employees enter 'VIEW'");
 		System.out.println("d. To view an employee enter 'VIEW EMPLOYEE'");
-		System.out.println("e. To exit enter 'EXIT'"+"\n");
+		System.out.println("e. To export to a CSV file enter 'EXPORT'");
+		System.out.println("F. To exit enter 'EXIT'"+"\n");
 		
 		//enter your choice
 		System.out.print("Enter: ");
@@ -72,6 +73,7 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 				}
 				
 			}else if(action.equalsIgnoreCase("remove")) {
+				
 				System.out.print("Enter the id of the employee you want to remove: ");
 				id = scanner.nextInt();
 				
@@ -88,12 +90,21 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 			}else if(action.equalsIgnoreCase("view")){
 				servicePublish.viewEmployees();
 				
+			}else if(action.equalsIgnoreCase("export")) {
+				
+				System.out.print("Enter the file path: ");
+				String path = scanner.next();
+				
+				servicePublish.importToCsv(path);
+				
 			}else if(action.equalsIgnoreCase("view employee")) {
+				
 				System.out.print("Enter the id of the employee: ");
 				int eid = scanner.nextInt();
 				servicePublish.getAnEmployee(eid);
 				
 			}else if(!action.equalsIgnoreCase("view") || !action.equalsIgnoreCase("add") || !action.equalsIgnoreCase("remove") || !action.equalsIgnoreCase("exit")|| !action.equalsIgnoreCase("view employee")) {
+				
 				System.out.println("Please enter a valid input! ");
 				
 			}
@@ -102,7 +113,8 @@ public class EmployeeSubscriberActivator implements BundleActivator {
 			System.out.println("b. To remove an employee enter 'REMOVE'");
 			System.out.println("c. To view all employees enter 'VIEW'");
 			System.out.println("d. To view an employee enter 'VIEW EMPLOYEE'");
-			System.out.println("e. To exit enter 'EXIT'"+"\n");
+			System.out.println("e. To export to a CSV file enter 'EXPORT'");
+			System.out.println("F. To exit enter 'EXIT'"+"\n");
 			
 			System.out.print("Enter: ");
 			action = scanner.next();

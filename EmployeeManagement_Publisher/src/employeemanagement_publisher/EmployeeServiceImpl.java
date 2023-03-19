@@ -1,5 +1,7 @@
 package employeemanagement_publisher;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,6 +77,36 @@ public class EmployeeServiceImpl implements EmployeeService{
 			}
 			System.out.println();
 		}
+	}
+	
+	@Override
+	public void importToCsv(String path) {
+		// TODO Auto-generated method stub
+		String csvHeader = "Employee ID,Employee Name,Contact Number,Age,\n";
+        String csvRowFormat = "%d,%s,%s,%d\n";
+        
+        try {
+            FileWriter writer = new FileWriter(path);
+            writer.append(csvHeader);
+
+            for (Integer key : employee.keySet()) {
+            	
+                String name = employee.get(key).getName();
+                String contact = employee.get(key).getContact();
+                int age = employee.get(key).getAge();
+                
+                String row = String.format(csvRowFormat, key, name,contact,age);
+                writer.append(row);
+            }
+            
+            System.out.println("Employee list is exported to "+path);
+
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+        	System.out.println("Can not find the file path");
+            e.printStackTrace();
+        }
 	}
 	
 }
