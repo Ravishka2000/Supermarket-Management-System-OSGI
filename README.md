@@ -8,7 +8,7 @@
 | Ranaweera G.R.D | IT21052606  | it21052606@my.sliit.lk |
 | Wickramanayake V.P.P  | IT21041402  | it21041402@my.sliit.lk  |
 | Priyabandu H.K.S.N  | IT21073564  | it21073564@my.sliit.lk  |
-| Content Cell  | Content Cell  | Content Cell  |
+| Peiris S H  | IT21023132  | it21023132@my.sliit.lk |
 
 ### Introduction
 
